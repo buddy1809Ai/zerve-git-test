@@ -1,0 +1,442 @@
+id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+name: Health Insurance Claim Risk Scoring using Gradient Boosting Ensembles
+project_id: 93873a81-ca41-44bc-bbcf-aab9249b75d7
+global_imports: []
+python_global_imports: ''
+r_global_imports: ''
+requirements: []
+linux_packages: []
+environment_variables: []
+is_public: false
+organization_id: 941c02a7-d2c8-4ae4-8363-b290e9794917
+layers:
+- blocks:
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Creates submission file with test IDs and model predictions
+    height: 1000
+    id: 066c9615-8fb1-488e-9985-bc0f650c7ce1
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: create_submission_csv
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 6500
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Lists files in the workspace directory
+    height: 1000
+    id: 270506d0-b2bb-4a42-afa0-88f4e2693c6f
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: list_files_2
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 1000
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Separates features (X) and target variable (y) from training dataset
+      for model preparation
+    height: 1000
+    id: 31fc394b-3119-4675-a47e-c8dc7685fa9c
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: prepare_features_target
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 3500
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Displays trained XGBoost classifier model summary
+    height: 1000
+    id: 33de41dc-b3a1-4cd6-90d3-84f7c906d447
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: print_model
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 5500
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Loads train and test CSV files into dataframes and displays their
+      dimensions
+    height: 1000
+    id: 35d0d6fe-f75e-4e28-80ba-609b3d131a01
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: load_datasets
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 3000
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Filters to numeric columns and imputes missing values using median
+      strategy for train/test sets
+    height: 1000
+    id: 3ae59c87-f935-4faa-9b5b-fef527c5fe09
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: impute_numeric_data
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 4500
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Generates probability predictions from trained XGBoost model on test
+      dataset
+    height: 1000
+    id: 622d55d6-8cfc-409c-9306-d5c9d501eacc
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: predict_proba_scores
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 6000
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Lists files in the working directory
+    height: 1000
+    id: 7352dbc4-b910-4e7f-aa31-07731a3a5e61
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: list_directory
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 2000
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Creates professional visualizations showing top 15 features by gain
+      and weight, plus gain vs weight comparison scatter plot for claim prediction
+      model
+    height: 1000
+    id: 90a2af2c-baab-4a28-9f91-f9f2a0b24a97
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: visualize_feature_importance
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 4000
+    y: 6400
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Trains XGBoost binary classifier with optimized hyperparameters on
+      preprocessed features
+    height: 1000
+    id: 9373057b-dea2-47a0-b86f-8d711c3a539d
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: xgboost_classifier
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 5000
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Searches filesystem to locate and report the path of train.csv file
+    height: 1000
+    id: a68f0e8c-c8b4-41f7-a2c2-fb3392c11f0f
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: find_train_csv
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 2500
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Extracts and displays top 20 feature importance scores from trained
+      XGBoost model using gain and weight metrics
+    height: 1000
+    id: bb4f518d-3e3e-441f-aaed-e316a2bf84be
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: extract_feature_importance
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 2000
+    y: 6400
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Evaluates XGBoost model performance by calculating Gini coefficient
+      and overall claim rate on training data
+    height: 1000
+    id: bc01b47c-7549-4e2e-acec-c5d80c89155f
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: calculate_gini_claim_rate
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 2000
+    y: 5000
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Verifies availability of core machine learning libraries (XGBoost,
+      LightGBM, scikit-learn, pandas, NumPy)
+    height: 1000
+    id: c6391153-4663-4174-b588-4fe24d4b35e4
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: ml_libraries_setup
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 1500
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Lists all files in the current working directory
+    height: 1000
+    id: c6754294-20e2-4a5e-8865-620cee0603ac
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: list_directory_2
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 7500
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Prints a greeting message to verify Zerve environment is working
+    height: 1000
+    id: cb684898-cdfc-4a46-bb26-0ba3158dda3f
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: hello_zerve
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 0
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Lists all files accessible in the current directory
+    height: 1000
+    id: cd3abcb5-6867-4a63-aa48-a5f018001619
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: list_files
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 500
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Displays the first rows of the submission predictions DataFrame
+    height: 1000
+    id: ecd5c1e8-301e-4fbf-9414-7459d372953f
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: submission_head
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 7000
+  - auto_size: false
+    canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    compute_settings:
+      compute_environment_type: 1
+    description: Displays feature matrix and target variable dimensions
+    height: 1000
+    id: f96eeeab-7884-4638-b9bb-0900e9f4c5d8
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    name: print_shapes
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 4000
+  canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+  edges:
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 02d0587e-6239-46d5-b52d-d7d38bce3440
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 066c9615-8fb1-488e-9985-bc0f650c7ce1
+    target: ecd5c1e8-301e-4fbf-9414-7459d372953f
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 211f354a-54f3-47e9-8a93-bf346abb7b66
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: cd3abcb5-6867-4a63-aa48-a5f018001619
+    target: 270506d0-b2bb-4a42-afa0-88f4e2693c6f
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 2432185d-456a-40ce-bcd0-0cb6d105cc73
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 31fc394b-3119-4675-a47e-c8dc7685fa9c
+    target: f96eeeab-7884-4638-b9bb-0900e9f4c5d8
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 3c752ca0-5c1d-4d43-884e-b45a63c1de9b
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: f96eeeab-7884-4638-b9bb-0900e9f4c5d8
+    target: 3ae59c87-f935-4faa-9b5b-fef527c5fe09
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 48a15fc6-db7a-4a4c-a888-d608513541a7
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 622d55d6-8cfc-409c-9306-d5c9d501eacc
+    target: 066c9615-8fb1-488e-9985-bc0f650c7ce1
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 4a5c961a-b96f-4e6a-97a3-793cfefa8bb3
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 270506d0-b2bb-4a42-afa0-88f4e2693c6f
+    target: c6391153-4663-4174-b588-4fe24d4b35e4
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 59fbf282-1e0c-424e-b58f-3c7834beafbd
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 9373057b-dea2-47a0-b86f-8d711c3a539d
+    target: 33de41dc-b3a1-4cd6-90d3-84f7c906d447
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 630d386f-4dce-4576-83ba-a255b45a1248
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 7352dbc4-b910-4e7f-aa31-07731a3a5e61
+    target: a68f0e8c-c8b4-41f7-a2c2-fb3392c11f0f
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 8011f5f2-f4fa-4d04-8eaf-e15fcf750740
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: c6391153-4663-4174-b588-4fe24d4b35e4
+    target: 7352dbc4-b910-4e7f-aa31-07731a3a5e61
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 8045a706-7e25-47d2-9af4-cf5e53d0e3be
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: bb4f518d-3e3e-441f-aaed-e316a2bf84be
+    target: 90a2af2c-baab-4a28-9f91-f9f2a0b24a97
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 8359a2a8-0b6d-4752-9124-aa67471abe4f
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 9373057b-dea2-47a0-b86f-8d711c3a539d
+    target: bb4f518d-3e3e-441f-aaed-e316a2bf84be
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: 890fc3d3-b246-4f69-9215-c7290a736201
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 9373057b-dea2-47a0-b86f-8d711c3a539d
+    target: bc01b47c-7549-4e2e-acec-c5d80c89155f
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: a9252308-b826-42fc-b91d-3edc4a428415
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 35d0d6fe-f75e-4e28-80ba-609b3d131a01
+    target: 31fc394b-3119-4675-a47e-c8dc7685fa9c
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: b0bf96e9-7212-4a5a-9755-b4163cbbe95a
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: cb684898-cdfc-4a46-bb26-0ba3158dda3f
+    target: cd3abcb5-6867-4a63-aa48-a5f018001619
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: d1a92ac2-a2ae-427b-bc80-743fd1344dcf
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: ecd5c1e8-301e-4fbf-9414-7459d372953f
+    target: c6754294-20e2-4a5e-8865-620cee0603ac
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: dcd524ef-89a7-41c3-9f3e-ca7e2327902a
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: a68f0e8c-c8b4-41f7-a2c2-fb3392c11f0f
+    target: 35d0d6fe-f75e-4e28-80ba-609b3d131a01
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: eececa81-1eb4-46d0-9c74-75825342711b
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 3ae59c87-f935-4faa-9b5b-fef527c5fe09
+    target: 9373057b-dea2-47a0-b86f-8d711c3a539d
+  - canvas_id: 4bd3cd2f-41e3-4ad8-997b-c32ebd795b1e
+    id: efd1097f-3b5e-47e3-a424-7810b85a8e47
+    layer_id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+    source: 33de41dc-b3a1-4cd6-90d3-84f7c906d447
+    target: 622d55d6-8cfc-409c-9306-d5c9d501eacc
+  id: 9726e7b4-993b-4e88-b8fe-03db94c99cb4
+  name: Development
+  type: 1
+assets: []
